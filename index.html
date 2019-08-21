@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Thi thử 2</title>
+	<script src="thiThu2.js"></script>
+	<script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<table border="1" width="800" align="center">
+		<tr>
+			<td colspan="2">
+				<img src="1.png">
+			</td>
+		</tr>
+		<tr>
+			<td width="200" height="1000" align="center">
+				<button>Đăng ký</button><br><br><br><br>
+				<button>TRANG CHỦ</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			</td>
+			<td width="600" height="1000">
+				<form>
+					<div class="from">
+						<h3>Đăng ký học</h3>
+						<div class="text-name">
+							<p>HỌ TÊN: </p>
+							<input type="text" id="name1" onblur="validateName()" placeholder="Họ tên">
+							<p id="loi_name"></p>
+						</div>
+						<div class="text-age">
+							<p>TUỔI: </p>
+							<input type="text" id="age" onblur="validateAge()" placeholder="Tuổi">
+							<p id="loi_age"></p>
+						</div>
+						<div class="gioitinh" onchange="validateGioiTinh()">
+						<p>GIỚI TÍNH: </p>
+						<input type="radio" value="NAM" name="gender" />Nam<br/>
+						<input type="radio" value="NỮ" name="gender" />Nữ<br/>
+						<p id="loi_gt"></p>
+						</div>
+						<div class="combobox">
+							<p>QUÊ QUÁN:</p>
+							<select id="selectCbb" onclick="kt()" onchange="validateCombobox()" >
+								<option id="cbb" value="1"> Chọn quê quán </option>
+								<option value="HN">HN</option>
+								<option value="HCM">HCM</option>
+								<option value="Đà Nẵng">Đà Nẵng</option>
+								<option value="Hải Phòng">Hải Phòng</option>
+							</select>
+							<p id="loi_cbb"></p>
+						</div>
+						<div class="text-email">
+							<p>EMAIL: </p>
+							<input type="text" id="email" onblur="validateEmail()" placeholder="Email">
+							<p id="loi_email"></p>
+						</div>
+						<div class="text-phone">
+							<p>ĐIỆN THOẠI: </p>
+							<input type="text" id="phone" onblur="validatePhone()" placeholder="Phone">
+							<p id="loi_phone"></p>
+						</div>
+						<div class="textArea">
+							<p>NƠI Ở HIỆN TẠI:</p>
+							<textarea id="area" cols="50" rows="6" ></textarea>
+							<p id="loi_area"></p>
+						</div>
+						<div class="button" align="center">
+							<input type="button" id="q1" onclick="validate()" value="ĐĂNG KÝ" />
+							<button class="btn-reset" id="q2" onclick="formReset(this.form); return !1; ">LÀM LẠI</button>
+						</div>	
+ 
+					</div>
+				</form>
+			</td>
+
+		</tr>
+	</table>
+</body>
+
+<script type="text/javascript">
+	
+function setSelectionRange(input, selectionStart, selectionEnd) {
+  if (input.setSelectionRange) {  
+    input.focus();
+    input.setSelectionRange(selectionStart, selectionEnd);
+  } 
+  else if (input.createTextRange) {
+    var range = input.createTextRange();
+    range.collapse(true);
+    range.moveEnd('character', selectionEnd);
+    range.moveStart('character', selectionStart);
+    range.select();
+  }
+}
+
+	function setCaretToPos(input, pos) {
+  		setSelectionRange(input, pos, pos);
+	}
+ 
+	function formReset(a){
+    $(a)[0].reset();
+    if($.isFunction($.fn.select2)){
+      $(a).find("select").val(0).trigger("change");
+    }
+            $("#q2").click(function() {
+            setCaretToPos($("#name1")[0], 0);
+            });
+}	
+
+</script>
+
+</html>
